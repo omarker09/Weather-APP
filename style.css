@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+body {
+    background-color: rgb(28 24 24);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./imgs/pexels-gabriela-palai-395196.jpg);
+    background-position: center;
+    background-size: cover;
+
+}
+
+.card {
+    height: 300px auto;
+    padding: 40px;
+    border-radius: 30px;
+    width: 400px;
+    background-color: bisque;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-image: linear-gradient(45deg,
+            hsl(240deg 100% 20%) 0%,
+            hsl(223deg 100% 25%) 11%,
+            hsl(215deg 100% 29%) 22%,
+            hsl(208deg 100% 33%) 33%,
+            hsl(202deg 100% 36%) 44%,
+            hsl(200deg 72% 44%) 56%,
+            hsl(199deg 57% 56%) 67%,
+            hsl(196deg 57% 66%) 78%,
+            hsl(193deg 60% 77%) 89%,
+            hsl(188deg 74% 88%) 100%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card .search {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .search input {
+    padding: 20px 30px;
+    border-radius: 65px;
+    outline: none;
+    border: none;
+    height: 60px;
+
+}
+
+.card .search button {
+    padding: 20px;
+    margin-left: 20px;
+    background-color: white;
+    border-radius: 50%;
+    outline: none;
+    height: 60px;
+    width: 60px;
+    border: none;
+    cursor: pointer;
+}
+
+.wheather {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    display: none;
+    text-align: center;
+}
+
+.active {
+    display: block;
+}
+
+.wheather h1 {
+    color: white;
+    font-size: 50px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0px;
+    margin-top: 30px;
+    position: relative;
+    width: 100%;
+
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.col img {
+    width: 40px;
+    margin-right: 20px;
+}
+
+.col div h3 {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+}
+
+.error {
+    position: absolute;
+    top: 70px;
+    font-size: 14px;
+    color: white;
+    text-align: left;
+    margin-left: 10px;
+    display: none;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/16915fc7d7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="search">
+            <input id="searchA" type="text" placeholder="enter your city name">
+            <button id="btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+            <div class="error">
+                <p>invalid city name</p>
+            </div>
+        </div>
+        <div class="wheather">
+            <img id="wh" src="./imgs/clouds.png">
+            <h1 class="temp">0°C</h1>
+            <h1 class="city">City</h1>
+            <div class="details">
+                <div class="col">
+                    <img src="./imgs/humidity.png" alt="">
+                    <div>
+                        <p class="hymidye">0%</p>
+                        <h3>humidity</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="./imgs/wind.png" alt="">
+                    <div>
+                        <p class="wind">0 km/h</p>
+                        <h3>Wind speed</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
