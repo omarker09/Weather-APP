@@ -1,4 +1,4 @@
-# Wheather-APP
+# Weather-APP
 Weather App (JavaScript)
 Weather App
 
