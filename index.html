@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/16915fc7d7.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif
+}
+
+body{
+    background-color: rgb(28 24 24);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-image: url(./imgs/pexels-gabriela-palai-395196.jpg);
+    background-position: center;
+    background-size: cover;
+ 
+}
+.card{
+    height: 300px auto;
+    padding: 40px;
+    border-radius: 30px;
+    width: 400px;
+    background-color: bisque;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-image: linear-gradient(
+  45deg,
+  hsl(240deg 100% 20%) 0%,
+  hsl(223deg 100% 25%) 11%,
+  hsl(215deg 100% 29%) 22%,
+  hsl(208deg 100% 33%) 33%,
+  hsl(202deg 100% 36%) 44%,
+  hsl(200deg 72% 44%) 56%,
+  hsl(199deg 57% 56%) 67%,
+  hsl(196deg 57% 66%) 78%,
+  hsl(193deg 60% 77%) 89%,
+  hsl(188deg 74% 88%) 100%
+);
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card .search{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.card .search input{
+    padding: 20px 30px;
+    border-radius: 65px;
+    outline: none;
+    border: none;
+    height: 60px;
+    
+}
+.card .search button{
+    padding: 20px;
+    margin-left: 20px;
+    background-color: white;
+    border-radius: 50%;
+    outline: none;
+    height: 60px;
+    width: 60px;
+    border: none;
+    cursor: pointer;
+}
+.wheather{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    display: none;
+    text-align: center;
+}
+.active{
+    display: block;
+}
+.wheather h1{
+    color: white;
+    font-size: 50px;
+}
+.details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0px;
+    margin-top: 30px;
+    position: relative;
+    width: 100%;
+    
+}
+.col{
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.col img{
+    width: 40px;
+    margin-right: 20px;
+}
+.col div h3{
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+}
+.error{
+    position: absolute;
+    top: 70px;
+    font-size: 14px;
+    color: white;
+    text-align: left;
+    margin-left: 10px;
+    display: none;
+}
+    </style>
+<div class="card">
+    <div class="search">
+        <input id="searchA" type="text" placeholder="enter your city name">
+        <button id="btn" ><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+        <div class="error">
+          <p>invalid city name</p>
+        </div>
+       </div>
+     <div class="wheather">
+        <img id="wh" src="./imgs/clouds.png" >
+        <h1 class="temp" >0°C</h1>
+        <h1 class="city" >City</h1>
+        <div class="details">
+            <div class="col">
+                <img src="./imgs/humidity.png" alt="">
+                <div>
+                    <p class="hymidye">0%</p>
+                    <h3>humidity</h3>
+                </div>
+            </div>
+            <div class="col">
+                <img src="./imgs/wind.png" alt="">
+                <div>
+                    <p class="wind">0 km/h</p>
+                    <h3>Wind speed</h3>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+<script>
+    
+
+apiKey = "11c0b5ac87206b39d429f07a6fe0df3b"
+apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q="
+let A = document.getElementById('searchA')
+let search = document.getElementById('btn')
+let wh = document.getElementById('wh');
+let whUp =  document.querySelector(".wheather");
+let erR =  document.querySelector(".error");
+    
+
+async function checkWheather(city){
+    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+    if(response.status == 404){
+        document.querySelector(".error").style.display = "block";
+        document.querySelector(".wheather").style.display = "none";
+
+    } else{
+        const data = await response.json();
+       
+        document.querySelector('.city').innerHTML = data.name;
+        document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + "°C"
+        document.querySelector('.hymidye').innerHTML = data.main.humidity + "%";
+        document.querySelector('.wind').innerHTML = data.wind.speed + "km/h";
+    
+        if (data.weather[0].main == "Clouds" ){
+           wh.src = "/imgs/clear.png"
+        }
+         else if (data.weather[0].main == "Clear" ){
+            wh.src = "./imgs/clouds.png"
+        }
+        else if (data.weather[0].main == "drizzle" ){
+            wh.src = "./imgs/drizzle.png"
+        }
+        else if (data.weather[0].main == "mist" ){
+            wh.src = "./imgs/mist.png"
+        }
+         else if (data.weather[0].main == "rain" ){
+            wh.src = "./imgs/rain.png"
+        }
+    
+        document.querySelector(".wheather").style.display = "block";
+        document.querySelector(".error").style.display = "none";
+        
+    }
+  
+
+}
+search.addEventListener('click', () => {
+    checkWheather(A.value)
+     whUp.classList.add('active')
+});
+</script>
+</body>
+</html>
